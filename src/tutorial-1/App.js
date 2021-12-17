@@ -1,6 +1,14 @@
+import Profile from "./components/Profile";
+import ProfileClass from "./components/ProfileClass";
+
 function App() {
+
   return (
-    <h1>Lesson Nr.1</h1>
+    <>
+      <Profile name='Вася!' registredAt={new Date(2021, 5, 22)} />
+      <ProfileClass name='Вася!' registredAt={new Date(2021, 5, 22)} />
+    </>
+
   );
 }
 
