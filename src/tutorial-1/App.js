@@ -5,8 +5,8 @@ function App() {
 
   return (
     <>
-      <Profile name='Вася!' registredAt={new Date(2021, 5, 22)} />
-      <ProfileClass name='Вася!' registredAt={new Date(2021, 5, 22)} />
+      <Profile name='Вася Пупкин' registredAt={new Date(2021, 5, 22)} />
+      <ProfileClass name='Вася Пупкин' registredAt={new Date(2021, 5, 22)} />
     </>
 
   );
