@@ -12,8 +12,7 @@ export default function Profile(props) {
 		borderRadius: '20px',
 		padding: '20px 40px',
 		margin: '50px auto'
-
-	}
+}
 
 	return (
 		<div style={style}>

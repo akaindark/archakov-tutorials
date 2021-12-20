@@ -37,18 +37,27 @@ export default function Form() {
 		marginRight: 'auto'
 	}
 
-	const email = (event) => {
+	const handleSubmit = (e) =>{
+		e.preventDefault();
 
+		if (email && password){
+			console.log(email, password);
+			email = "";
+			password = "";
+		} else {
+			alert('Ведите ваши данные!')
+		}
 	};
-	const password = () => {
 
-	};
+	let email = "";
+	let password = "";
+
 
 	return (
 		<div style={styleWrap}>
-			<form style={styleForm} action="">
-				<input onInput={() => email} style={styleInput} type="text" placeholder='E-Mail'/>
-				<input onChange={() => password} style={styleInput} type="password" placeholder='Пароль'/>
+			<form style={styleForm} onSubmit={handleSubmit}>
+				<input onChange={(event) => email = event.target.value} style={styleInput} type="text" placeholder='E-Mail'/>
+				<input onChange={(event) => password = event.target.value} style={styleInput} type="password" placeholder='Пароль'/>
 				<button style={styleBnt} type='submit'>Войти</button>
 			</form>
 		</div>
