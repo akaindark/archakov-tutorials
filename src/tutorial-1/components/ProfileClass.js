@@ -19,7 +19,7 @@ class Profile extends React.Component{
 
 		return(
 				<div style={style}>
-					<h1 style={{fontSize: '48px', fontWeight: '400'}}>Привет, <b>{this.props.name.slice(0, 4)}!</b></h1>
+					<h1 style={{fontSize: '48px', fontWeight: '400'}}>Привет, <b>{this.props.name.split(' ', 1)}!</b></h1>
 					<p style={{fontSize: '20px'}}>Дата регистрации: {date}</p>
 				</div>
 			);
