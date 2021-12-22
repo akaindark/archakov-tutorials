@@ -10,7 +10,7 @@ export default function Form() {
 		e.preventDefault();
 
 		if (email && password) {
-			console.log(email.trim(), password.trim());
+			console.log(email, password);
 			email = "";
 			password = "";
 		} else {
@@ -20,9 +20,9 @@ export default function Form() {
 
 	function changeInputValue (event) {
 		if (event.target.name === 'email'){
-			email = event.target.value;
+			email = event.target.value.trim();
 		} else {
-			password = event.target.value;
+			password = event.target.value.trim();
 		}
 	}
 
