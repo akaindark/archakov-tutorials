@@ -33,7 +33,7 @@ function App() {
         <h1 className="app-title">FAQ</h1>
         <div className="app-tabs">
           {
-            tabs.map((tab) => (
+            tabs.map((tab, id ) => (
               <Tab key={tab.id} {...tab} />
             ))
           }
