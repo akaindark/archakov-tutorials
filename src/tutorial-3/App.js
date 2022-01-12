@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import './style.css';
 import Tab from "./components/Tab";
 
 function App() {
+
+  const [activeId, setActiveId] = useState();
+
    const tabs = [
     {
         id: 1,
@@ -26,15 +29,18 @@ function App() {
     },
 ];
 
-
   return (
     <div id="app">
       <div className="app-container">
         <h1 className="app-title">FAQ</h1>
         <div className="app-tabs">
           {
-            tabs.map((tab, id ) => (
-              <Tab key={tab.id} {...tab} />
+            tabs.map( (tab, i) => (
+              <Tab
+                tab={tab}
+                activeId={activeId}
+                setActiveId={setActiveId}
+              />
             ))
           }
         </div>
