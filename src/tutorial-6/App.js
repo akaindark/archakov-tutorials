@@ -11,20 +11,15 @@ export default function App() {
 
   return (
     <>
-      {/*=====Header=====*/}
 
       <Header/>
-
-      {/*=====Pages=====*/}
 
       {pathname === '/' && <Home/>}
       {pathname === '/about' && <About/>}
       {pathname === '/login' && <h2>Login</h2>}
-      {postId && <FullArticle id={postId} />}
+      {postId && <FullArticle id={postId}/>}
 
-      {/*=====Footer=====*/}
-
-      <Footer />
+      <Footer/>
     </>
   )
 }
