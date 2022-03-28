@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.05);
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 15px;
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.full-post {
+  background-color: #fff;
+  padding: 30px;
+}
