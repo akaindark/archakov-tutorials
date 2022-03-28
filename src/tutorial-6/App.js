@@ -6,13 +6,13 @@ import Footer from "./components/Footer";
 import FullArticle from "./pages/FullArticle";
 
 export default function App() {
-  const pathname = window.location.pathname;
-  const id = pathname.split("/post/")[1];
-  console.log(id);
+  const {pathname} = window.location;
+  const postId = pathname.split("/post/")[1];
 
   return (
     <>
       {/*=====Header=====*/}
+
       <Header/>
 
       {/*=====Pages=====*/}
@@ -20,7 +20,7 @@ export default function App() {
       {pathname === '/' && <Home/>}
       {pathname === '/about' && <About/>}
       {pathname === '/login' && <h2>Login</h2>}
-      {pathname.includes('/post/')  && <FullArticle id={id} />}
+      {postId && <FullArticle id={postId} />}
 
       {/*=====Footer=====*/}
 

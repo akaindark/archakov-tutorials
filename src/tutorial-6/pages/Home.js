@@ -44,7 +44,9 @@ export default function Home() {
           <Card>
             <Card.Img variant="top" src={obj.imageUrl}/>
             <Card.Body>
-              <Card.Title>{obj.title}</Card.Title>
+              <Card.Title>
+                <a href={`/post/${obj.id}`}>{obj.title}</a>
+              </Card.Title>
               <Card.Text>{obj.text}</Card.Text>
             </Card.Body>
           </Card>
