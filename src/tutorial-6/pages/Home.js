@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {Card, Col, Row} from 'react-bootstrap';
 
 export const posts = [
@@ -45,9 +46,9 @@ export default function Home() {
             <Card.Img variant="top" src={obj.imageUrl}/>
             <Card.Body>
               <Card.Title>
-                <a href={`/post/${obj.id}`}>{obj.title}</a>
+                <Link to={`/post/${obj.id}`}>{obj.title}</Link>
               </Card.Title>
-              <Card.Text>{obj.text}</Card.Text>
+              <Card.Text>{obj.text.substring(0, 100)} ...</Card.Text>
             </Card.Body>
           </Card>
         </Col>
