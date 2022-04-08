@@ -1,26 +1,28 @@
 import React from "react";
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 import Home from "./pages/Home";
-import Header from "./components/Header";
 import About from "./pages/About";
-import Footer from "./components/Footer";
 import FullArticle from "./pages/FullArticle";
 import NotFound from "./pages/NotFound";
+import Layout from "./components/Layout";
+import {Login} from "./pages/Login";
+import Profile from "./pages/Profile";
 
 export default function App() {
 
   return (
     <>
-      <Header/>
-
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/about" element={<About/>}/>
-        <Route path="/post/:id" element={<FullArticle/>}/>
-        <Route path="*" element={<NotFound />}/>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<Home/>}/>
+          <Route path="about" element={<About/>}/>
+          <Route path="post/:id" element={<FullArticle/>}/>
+          <Route path="login" element={<Login />}/>
+          <Route path="profile" element={<Profile />}/>
+          <Route path="not-found" element={<NotFound/>}/>
+          <Route path="*" element={<Navigate to="/not-found"/>}/>
+        </Route>
       </Routes>
-
-      <Footer/>
     </>
   )
 }
