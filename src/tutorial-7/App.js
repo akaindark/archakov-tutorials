@@ -1,91 +1,56 @@
 import React from "react";
-import {useForm} from "react-hook-form";
+import {Routes, Route, useNavigate} from "react-router-dom";
+import PersonalInfoForm from "./PersonalInfoForm";
+import {useForm, FormProvider, useFormContext} from "react-hook-form";
+import * as yup from "yup";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {Button} from "@mui/material";
 
-import "./index.scss";
-import {Button, TextField} from "@mui/material";
+// export default function App() {
+//   const [formValues, setFormValues] = React.useState({});
+//   const navigate = useNavigate();
+//
+//   const nextStep = (name) => {
+//     navigate(`/${name}`);
+//   };
+//
+//   console.log('Главная форма', formValues);
+//
+//
+//   return (
+//     <div className="App">
+//       <Routes>
+//         <Route path="/" element={<PersonalInfoForm nexStep={nextStep} setFormValues={setFormValues}/>}/>
+//         <Route path="address" element={<AddressForm nexStep={nextStep} setFormValues={setFormValues}/>}/>
+//         <Route path="result" element={<Result formValues={formValues}/>}/>
+//       </Routes>
+//     </div>
+//   );
+// }
+
+
+const schema = yup.object().shape({
+  firstName: yup.string().min(2, 'Слишком короткое имя'),
+  lastName: yup.string().min(3, 'Слишком короткая фамилия'),
+  email: yup.string().email('Некорректный email').required('Обязательное поле')
+});
 
 export default function App() {
-  const {handleSubmit, register, formState, reset} = useForm ({
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      about: ""
-    },
+  const methods = useForm({
+    resolver: yupResolver(schema)
   });
 
-  const onSubmit = (values) => console.log("ФОРМА!", values);
-
-  console.log(formState.errors);
+  const onSubmit = (values) => {
+    console.log(values)
+  }
 
   return (
-    <form  className="App">
-      <div className="row">
-        <TextField
-          name="firstName"
-          label="Имя"
-          {...register("firstName", {
-            validate: (value) => value !== "admin" || "Nice try!"
-          })}
-          helperText={formState.errors.firstName && formState.errors.firstName.message}
-          error={!!formState.errors.firstName}
-          variant="standard"
-          fullWidth
-        />
-        <TextField
-          name="lastName"
-          label="Фамилия"
-          {...register("lastName", {
-            required: "Это обязательное поле!"
-          })}
-          helperText={formState.errors.lastName && formState.errors.lastName.message}
-          error={!!formState.errors.lastName}
-          variant="standard"
-          fullWidth
-        />
-      </div>
-      <div className="row">
-        <TextField
-          {...register("email", {
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9._%+-]+\.[A-Z]{2,}$/i,
-              message: "Это неверная почта!"
-            }
-          })}
-          helperText={formState.errors.email && formState.errors.email.message}
-          error={!!formState.errors.email}
-          name="email"
-          label="E-Mail"
-          defaultValue=""
-          variant="standard"
-          fullWidth
-        />
-        <TextField
-          {...register("password", {
-            required: "Это обязательное поле!"
-          })}
-          helperText={formState.errors.password && formState.errors.password.message}
-          error={!!formState.errors.password}
-          name="password"
-          type="password"
-          label="Пароль"
-          variant="standard"
-          fullWidth
-        />
-      </div>
-      <div className="row">
-        <TextField name="about" label="Обо мне" variant="standard" fullWidth/>
-      </div>
+    <div className="App">
+      <FormProvider {...methods} >
+        <PersonalInfoForm/>
+      </FormProvider>
       <br/>
-      <div className="row">
-        <Button onClick={handleSubmit(onSubmit)} variant="contained" color="primary">
-          Зарегистрироваться
-        </Button>
-        <Button onClick={() => reset()} variant="contained" color="secondary">
-          Очистить
-        </Button>
-      </div>
-    </form>
+      <Button onClick={methods.handleSubmit(onSubmit)} variant="contained" color="primary">Далее</Button>
+    </div>
   );
 }

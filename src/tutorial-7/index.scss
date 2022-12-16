@@ -18,3 +18,8 @@ body {
 .MuiButton-root {
   margin: 0 15px !important;
 }
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
